@@ -62,4 +62,19 @@ export class TodosComponent implements OnInit{
         }
       })
     }
+    filterOptions = 'all'; // Default filter option
+
+    filterTodos() {
+      if (this.filterOptions === 'all') {
+        this.getAllTodos();
+      } else if(this.filterOptions === 'notcompleted'){
+        const isNotCompleted = this.filterOptions === 'notcompleted';
+        this.todos =  this.todos.filter(todo => todo.isCompleted === isNotCompleted);
+      } 
+      else {
+        const isCompleted = this.filterOptions === 'completed';
+        // Filter the todos array based on the selected filter option
+        this.todos = this.todos.filter(todo => todo.isCompleted === isCompleted);
+      }
  }
+}
